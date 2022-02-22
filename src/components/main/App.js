@@ -10,6 +10,8 @@ import Payment from './payment/payment';
 
 export default function Home() {
 	const isMobile = useMediaQuery('(max-width: 600px)');
+
+	
 	return (
 		<>
 			<Header />
