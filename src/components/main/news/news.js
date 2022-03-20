@@ -15,7 +15,6 @@ export default function News() {
 	React.useEffect(() => {
 		const getOrders = async () => {
 			const { data: news } = await api.client.get_news();
-			console.log('news: ', news);
 			setNews([...news.slice(0, 9)]);
 		};
 		getOrders();
