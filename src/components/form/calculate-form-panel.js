@@ -34,6 +34,7 @@ const CalculateFormPanel = ({ btnText }) => {
 	};
 	const navigate = useNavigate();
 	const auth = useData();
+	const [open, setOpen] = React.useState(false);
 	const [size, setSize] = React.useState('');
 	const [isOrder, setIsOrder] = React.useState(true);
 	const [city, setCity] = React.useState([]);
@@ -51,45 +52,43 @@ const CalculateFormPanel = ({ btnText }) => {
 	let width = +order.width.match(numSize);
 	let height = +order.height.match(numSize);
 	let length = +order.length.match(numSize);
-	const getCalculate = async () => {
-		const { data: response } = await api.client.calculate(
-			width,
-			height,
-			length
-		);
-		const { result } = response;
-		setOrder({ ...order, cost: result });
-	};
 
-	const getCity = async () => {
-		const { data } = await api.client.get_citys();
-		setCity(data.types[1].citys);
+	const getCalculate = async () => {
+		const {
+			data: { result: cost },
+		} = await api.client.calculate(width, height, length);
+		setOrder({ ...order, cost });
 	};
 
 	React.useEffect(() => {
+		const getCity = async () => {
+			const { data } = await api.client.get_citys();
+			let { citys: cities } = data.types[1];
+			setCity(cities);
+		};
 		getCity();
 	}, []);
 
 	const setCityFrom = e => {
 		const {
-			target: { value },
+			target: { value: from_city },
 		} = e;
 
-		setOrder({ ...order, from_city: value });
-		// dispatch(createOrder(order));
+		setOrder({ ...order, from_city });
 	};
 
 	const setCityTo = e => {
 		const {
-			target: { value },
+			target: { value: to_city },
 		} = e;
-		setOrder({ ...order, to_city: value });
+		setOrder({ ...order, to_city });
 	};
 
 	const methodPays = e => {
 		const {
 			target: { value },
 		} = e;
+
 		setPays(value);
 	};
 
@@ -97,9 +96,15 @@ const CalculateFormPanel = ({ btnText }) => {
 		const {
 			target: { value },
 		} = e;
+
 		setDelivery(value);
 	};
-
+	const closeSelect = () => {
+		setOpen(false);
+	};
+	const selectOpen = () => {
+		setOpen(true);
+	};
 	const onSubmitComplete = () => {
 		if (size !== '' && city !== [] && delivery !== '' && pays !== '') {
 			getCalculate();
@@ -156,11 +161,14 @@ const CalculateFormPanel = ({ btnText }) => {
 						onFocus={() => getCalculate()}
 						labelId='demo-multiple-checkbox-label'
 						id='demo-multiple-checkbox'
+						open={open}
+						onOpen={selectOpen}
 						value={size}
 						input={<OutlinedInput label='Размер' />}
 						renderValue={selected => selected}
 						MenuProps={MenuProps}>
 						<CustomSelectList
+							closeSelect={closeSelect}
 							setPersonName={setSize}
 							order={order}
 							setOrder={setOrder}

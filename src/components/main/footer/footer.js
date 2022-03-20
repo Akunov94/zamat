@@ -26,20 +26,22 @@ const Footer = () => {
 					<Grid
 						id='footer-container'
 						container
-						spacing={2}
+						spacing={1}
 						justifyContent='space-between'>
 						<Grid item xs={4}>
 							<span className='address-span'>Наши офисы</span>
 							<ul className='address'>
-								<li>г. Бишкек, ул. Оренбургская 32 (пер. М. Горького)</li>
-								<li>г. Ош, ул. Курманжан-Датка 151</li>
+								<li className='bishkek'>
+									г. Бишкек, ул. Оренбургская 32 (пер. М. Горького)
+								</li>
+								<li className='osh'>г. Ош, ул. Курманжан-Датка 151</li>
 							</ul>
 							<img src={footerLogo} alt='' id='logo-footer' />
 						</Grid>
 						<Grid item xs={4} direction='column'>
 							<span className='contacts-span'>Контакты филиалов</span>
-							<Grid container spacing={2} justifyContent='space-evenly'>
-								<Grid item xs={6}>
+							<Grid container spacing={2}>
+								<Grid item xs={0}>
 									<ul className='address'>
 										<li>г.Бишкек</li>
 										<li>+996 (771) 808 111</li>
@@ -47,7 +49,7 @@ const Footer = () => {
 										<li>+996 (997) 808 111</li>
 									</ul>
 								</Grid>
-								<Grid item xs={6}>
+								<Grid item xs={0}>
 									<ul className='address'>
 										<li>г. Ош:</li>
 										<li>+996 (771) 808 112</li>
@@ -62,12 +64,12 @@ const Footer = () => {
 							<Box>
 								<Stack
 									sx={{
-										mx: { xs: 2 },
-										my: { xs: 8 },
+										mx: { xs: 3 },
+										my: { xs: 4 },
 										cursor: 'pointer',
 									}}
 									direction={{
-										xs: 'row',
+										xs: 'column',
 										sm: 'row',
 										md: 'row',
 										lg: 'row',

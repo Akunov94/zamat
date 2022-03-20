@@ -62,7 +62,6 @@ const Authlogin = ({ handleCloseModal }) => {
 		try {
 			setIsLoading(true);
 			const { data: loginData } = await api.client.login(data);
-			console.log(loginData, '⇚ data user');
 			auth.setUserName(JSON.stringify(loginData.user));
 			auth.setToken(loginData.access);
 			navigate('/');

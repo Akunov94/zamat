@@ -7,6 +7,10 @@
 }
 
 @media only screen and (max-width: 600px) {
+	.modal-mobile {
+		background-color: #f00;
+		width: 250px;
+	}
 	.app-bar {
 		line-height: 0px;
 		height: 65px;

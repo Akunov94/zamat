@@ -22,12 +22,6 @@
 .hr {
 	border: 1px solid rgba(0, 0, 0, 0.15);
 }
-
-.pay {
-}
-.btn-arrange {
-}
-
 .right-elements {
 	font-weight: normal;
 	font-size: 20px;
@@ -39,9 +33,12 @@
 }
 .box1 {
 	display: flex;
-	padding: 0 15px 0 15px;
 }
 @media (max-width: 600px) {
+	.parents {
+		width: 400px;
+		margin-left: 0px;
+	}
 	.box1 {
 		display: inline;
 	}

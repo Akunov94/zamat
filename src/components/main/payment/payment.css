@@ -37,21 +37,18 @@
 	}
 	#payment-container {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
+		justify-content: center;
+		flex-direction: column;
 		margin-bottom: 0;
 	}
 	.parent-payment .payment-logo {
 		height: 78px;
 		margin-top: 10px;
-		text-align: center;
-		justify-content: center;
-		width: 170px;
 	}
 	.parent-payment .payment-tel {
 		margin-bottom: 0;
-		text-align: center;
-		width: 150px;
+		width: 125px;
 	}
 	.parent-payment .payment-bottom {
 		margin-bottom: 0px;

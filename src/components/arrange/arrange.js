@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import miniBalance from '../../assets/img/miniBalance.svg';
 import miniElsom from '../../assets/img/miniElsom.svg';
 import miniMbank from '../../assets/img/miniMbank.svg';
@@ -15,6 +16,7 @@ import useData from '../../hooks/useData/index';
 
 export default function Arrange() {
 	const auth = useData();
+	const navigate = useNavigate();
 
 	const user = auth.user ? JSON.parse(auth.user) : null;
 
@@ -25,15 +27,14 @@ export default function Arrange() {
 			user: user.id,
 			cost: Math.floor(getOrder.cost),
 			recipient_address: getOrder.from_city,
-			recipient_name: 'Alar',
+			recipient_name: 'Alatte biroo',
 			recipient_phone: '0555 55 88 66',
 			sender_address: getOrder.to_city,
-			sender_name: 'Men',
+			sender_name: 'Biroo',
 			sender_phone: '0588 55 55 55',
 		};
-
 		await api.client.create_order(order);
-		localStorage.removeItem('order');
+		navigate('/');
 	};
 
 	return (
@@ -56,7 +57,7 @@ export default function Arrange() {
 									padding: '25px 15px',
 									boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.05)',
 									borderRadius: '10px',
-									width: '520px',
+									width: { xs: '400px', md: '520px' }, //'520px'
 									height: '600px',
 									lineHeight: '50px',
 									position: 'relative',
@@ -183,7 +184,9 @@ export default function Arrange() {
 								</Grid>
 								<Typography
 									align='center'
-									onClick={() => (user ? createOrder() : console.log('jok'))}
+									onClick={() =>
+										user ? createOrder() : alert('User Not Found')
+									}
 									sx={{ pt: '35px', cursor: 'pointer' }}>
 									<Button
 										sx={{

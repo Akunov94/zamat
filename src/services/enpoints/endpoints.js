@@ -9,6 +9,7 @@ const endpoints = {
 			`/orders/calculate/?q=width=${width}&height=${height}&length=${length}`
 		),
 	get_citys: () => axios.get('/orders/get_citys/'),
+	get_news: () => axios.get('/news'),
 	get_Profile: () => axios.get('/users/profile/'),
 	get_status: code => axios.get('/orders/get_status/', { params: { code } }),
 	create_order: order => axios.post('/orders/create/', order),

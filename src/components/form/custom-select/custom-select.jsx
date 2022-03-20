@@ -7,7 +7,7 @@ import * as React from 'react';
 import ExactDimensions from '../../form/custom-select/exact-dimensions/';
 import Approximately from './approximately/Approximately';
 
-function CustomSelectList({ setPersonName, order, setOrder }) {
+function CustomSelectList({ setPersonName, order, setOrder, closeSelect }) {
 	const [value, setValue] = React.useState('1');
 
 	const handleChange = (event, tabNum) => {
@@ -30,13 +30,15 @@ function CustomSelectList({ setPersonName, order, setOrder }) {
 				</Box>
 				<TabPanel value='1'>
 					<Approximately
-						setPersonName={setPersonName}
+						closeSelect={closeSelect}
 						order={order}
+						setPersonName={setPersonName}
 						setOrder={setOrder}
 					/>
 				</TabPanel>
 				<TabPanel value='2'>
 					<ExactDimensions
+						closeSelect={closeSelect}
 						order={order}
 						setPersonName={setPersonName}
 						setOrder={setOrder}

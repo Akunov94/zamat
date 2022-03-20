@@ -1,9 +1,9 @@
 //@ts-check
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 
-const ExactDimensions = ({ setPersonName, order, setOrder }) => {
+const ExactDimensions = ({ setPersonName, order, setOrder, closeSelect }) => {
 	const [size, setSize] = useState({
 		width: '',
 		height: '',
@@ -15,6 +15,7 @@ const ExactDimensions = ({ setPersonName, order, setOrder }) => {
 		let { width, height, length } = { ...size };
 		setPersonName(`${width}${height}${length}`);
 		setOrder({ ...order, width, height, length });
+		// closeSelect();
 	}, [size]);
 
 	const setWidth = e => {
@@ -74,6 +75,9 @@ const ExactDimensions = ({ setPersonName, order, setOrder }) => {
 					variant='outlined'
 					sx={{ mb: '21px' }}
 				/>
+				<Button onClick={closeSelect} variant='outlined'>
+					Ok
+				</Button>
 			</Box>
 		</>
 	);

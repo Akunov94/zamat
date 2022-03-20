@@ -46,7 +46,7 @@ let dataList = [
 	},
 ];
 
-function Approximately({ setPersonName, order, setOrder }) {
+function Approximately({ setPersonName, order, setOrder, closeSelect }) {
 	const selectChange = id => {
 		let example = dataList.filter(list => list.id === id);
 		const { title, boxLength, boxWidth, boxHeight } = example[0];
@@ -58,6 +58,7 @@ function Approximately({ setPersonName, order, setOrder }) {
 			width: boxWidth,
 			height: boxHeight,
 		});
+		closeSelect();
 	};
 
 	return (

@@ -22,13 +22,11 @@ const style = {
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 416,
-	height: 540,
 	borderRadius: '10px',
 	backgroundColor: '#fff',
 	border: 'none',
 	boxShadow: 24,
-	p: 4,
+	p: 2,
 };
 
 const ResponsiveAppBar = () => {
@@ -237,6 +235,7 @@ const ResponsiveAppBar = () => {
 											onClick={handleOpen}
 											variant='contained'
 											disableRipple
+											size='small'
 											sx={{
 												my: 0,
 												ml: { xs: 14, sm: 0 },
@@ -248,7 +247,7 @@ const ResponsiveAppBar = () => {
 											onClose={handleCloseModal}
 											aria-labelledby='modal-modal-title'
 											aria-describedby='modal-modal-description'>
-											<Box style={style}>
+											<Box style={style} className='modal-mobile'>
 												<Authlogin handleCloseModal={handleCloseModal} />
 											</Box>
 										</Modal>

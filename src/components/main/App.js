@@ -10,15 +10,21 @@ import Payment from './payment/payment';
 
 export default function Home() {
 	const isMobile = useMediaQuery('(max-width: 600px)');
-
-	
 	return (
 		<>
-			<Header />
-			{isMobile ? <AccordionForm /> : <CalculateForm />}
-			<Payment />
-			<News />
-			<Footer />
+			<div className='wrapper-content'>
+				<header>
+					<Header />
+				</header>
+				<main className='main'>
+					{isMobile ? <AccordionForm /> : <CalculateForm />}
+					<Payment />
+					<News />
+				</main>
+				<footer>
+					<Footer />
+				</footer>
+			</div>
 		</>
 	);
 }
