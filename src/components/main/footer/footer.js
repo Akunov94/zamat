@@ -61,7 +61,10 @@ const Footer = () => {
 						</Grid>
 						<Grid item xs={4}>
 							<span className='social-span'>Соц.сети:</span>
-							<Box>
+							<Box
+								sx={{
+									ml: { xs: '0px', md: '-24px' },
+								}}>
 								<Stack
 									sx={{
 										mx: { xs: 3 },
