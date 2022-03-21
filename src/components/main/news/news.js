@@ -68,12 +68,12 @@ export default function News() {
 												gutterBottom
 												variant='h5'
 												component='h2'>
-												{card.title.length > 15
+												{card.title.length > 20
 													? card.title.substring(0, 12) + '...'
 													: null}
 											</Typography>
 											<Typography className='second-line'>
-												{card.body.length > 15
+												{card.body.length > 35
 													? card.body.substring(0, 20) + '...'
 													: null}
 											</Typography>
