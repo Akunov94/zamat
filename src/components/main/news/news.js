@@ -68,7 +68,7 @@ export default function News() {
 												gutterBottom
 												variant='h5'
 												component='h2'>
-												{card.title.repeat(5).length > 10
+												{card.title.length > 15
 													? card.title.substring(0, 12) + '...'
 													: null}
 											</Typography>
