@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/img/Logo.svg';
 import api from '../../../services/service';
 import Footer from '../../main/footer/footer';
@@ -17,15 +18,14 @@ import validationRegister from './validationRegister';
 const theme = createTheme();
 
 export default function SignUp() {
-	// const [valueNum, setValueNum] = React.useState('');
+	const navigate = useNavigate();
+
 	const [err, setErr] = React.useState('');
 	const [errEmail, setErrEmail] = React.useState('');
-	// const [isLoading, setIsLoading] = React.useState(false);
 	const {
 		control,
 		handleSubmit,
 		formState: { errors },
-		// setError,
 	} = useForm({
 		resolver: yupResolver(validationRegister),
 	});
@@ -33,14 +33,18 @@ export default function SignUp() {
 	const onSubmit = async data => {
 		try {
 			await api.client.registration(data);
-			// const { data: createUser } = await api.client.registration(data);
+			navigate('/');
 		} catch (e) {
-			if (e.response.status === 400) {
-				setErr('pass err');
-				setErrEmail('email err');
+			if (e.response.data.email) {
+				setErrEmail('Email is invalid or already taken');
+				setErr('');
+			} else {
+				setErrEmail('');
+			}
+			if (e.response.data.password) {
+				setErr("passwords don't match");
 			}
 		} finally {
-			// setIsLoading(false);
 		}
 	};
 
@@ -55,10 +59,7 @@ export default function SignUp() {
 						alignItems: 'center',
 					}}>
 					<form onSubmit={handleSubmit(onSubmit)}>
-						<Grid>
-							<img id='logo-footer' src={logo} alt='' />
-						</Grid>
-						<Typography component='h2' variant='h5'>
+						<Typography component='h2' variant='h5' sx={{ mt: 5 }}>
 							Регистрация
 						</Typography>
 						<Box sx={{ mt: 3 }}>
@@ -70,6 +71,7 @@ export default function SignUp() {
 										defaultValue=''
 										render={({ field }) => (
 											<TextField
+												sx={{ size: 'small' }}
 												{...field}
 												error={Boolean(errors.name?.message)}
 												fullWidth={true}

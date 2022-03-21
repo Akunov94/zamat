@@ -68,8 +68,7 @@ const Authlogin = ({ handleCloseModal }) => {
 			handleModalClose();
 		} catch (e) {
 			if (e.response.status === 401) {
-				setErrEmail('password is incorrect');
-				console.error(e);
+				setErrEmail('No active account found with the given credentials');
 			}
 		} finally {
 			setIsLoading(false);
