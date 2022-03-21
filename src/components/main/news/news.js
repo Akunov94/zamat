@@ -45,7 +45,7 @@ export default function News() {
 									<Card
 										sx={{
 											width: '100%',
-											height: '320px',
+											height: '360px',
 											display: 'flex',
 											alignItems: 'stretch',
 											pt: '32px',
@@ -68,13 +68,11 @@ export default function News() {
 												gutterBottom
 												variant='h5'
 												component='h2'>
-												{card.title.length > 20
-													? card.title.substring(0, 12) + '...'
-													: null}
+												{card.title}
 											</Typography>
 											<Typography className='second-line'>
-												{card.body.length > 35
-													? card.body.substring(0, 20) + '...'
+												{card.body.length > 25
+													? card.body.substring(0, 45) + '...'
 													: null}
 											</Typography>
 											<Typography className='date-line'>
